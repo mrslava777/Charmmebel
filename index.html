@@ -106,7 +106,7 @@ a:hover .brand{transform:rotate(-6deg)}
 .btn::before{content:"";position:absolute;inset:0;background:var(--steel-2);transform:translateY(101%);transition:transform .45s var(--ease);z-index:1}
 .btn:hover::before{transform:translateY(0)}
 .btn:hover{transform:translateY(-2px)}
-.btn.ghost{background:transparent;color:var(--heading);border-color:rgba(234,242,251,.45)}
+.btn.ghost{background:rgba(10,26,48,.35);color:var(--heading);border-color:rgba(234,242,251,.45)}
 .btn.ghost:hover{color:#0d2440}
 .btn.ghost::before{background:#eaf2fb}
 .btn.sm{padding:11px 20px;min-height:40px;font-size:10.5px;letter-spacing:.14em;white-space:nowrap}
@@ -127,18 +127,24 @@ a:hover .brand{transform:rotate(-6deg)}
 .mobile-menu.open a:nth-child(7){transition-delay:.54s}
 .mobile-menu .mm-foot{margin-top:30px;font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:#7e93ab;opacity:1;transform:none}
 
-/* ============ hero ============ */
-.hero{padding:clamp(104px,15vh,160px) 0 0;position:relative}
-.hero-grid{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:clamp(24px,4vw,60px);align-items:end}
-.hero-kicker{display:flex;align-items:center;gap:14px;font-size:clamp(10px,1vw,11.5px);font-weight:700;letter-spacing:.3em;text-transform:uppercase;color:var(--muted)}
+/* ============ hero: фото как фон ============ */
+.hero{position:relative;padding:clamp(130px,20vh,220px) 0 0;overflow:hidden}
+.hero-bg{position:absolute;inset:0;z-index:0;pointer-events:none}
+.hero-bg img{width:100%;height:100%;object-fit:cover;object-position:center 60%;animation:kenburns 26s ease-in-out infinite alternate}
+.hero-bg::after{
+  content:"";position:absolute;inset:0;
+  background:
+    linear-gradient(180deg,rgba(10,26,48,.45) 0%,rgba(10,26,48,0) 26%,rgba(10,26,48,0) 58%,var(--bg) 98%),
+    linear-gradient(90deg,rgba(10,26,48,.96) 0%,rgba(10,26,48,.88) 40%,rgba(10,26,48,.6) 72%,rgba(10,26,48,.36) 100%);
+}
+.hero .wrap{position:relative;z-index:1}
+@keyframes kenburns{from{transform:scale(1.02) translate(0,0)}to{transform:scale(1.1) translate(-1.5%,1%)}}
+.hero-kicker{display:flex;align-items:center;gap:14px;font-size:clamp(10px,1vw,11.5px);font-weight:700;letter-spacing:.3em;text-transform:uppercase;color:var(--steel-2)}
 .hero-kicker::before{content:"";width:44px;height:1px;background:var(--steel-2);flex:0 0 auto}
 h1{font-family:var(--serif);font-weight:400;font-size:clamp(36px,6.6vw,86px);line-height:1.04;letter-spacing:.005em;margin:24px 0 0;color:var(--heading)}
 h1 .it{font-style:italic;color:var(--steel-2);white-space:nowrap}
-h1 .thin{display:block;font-family:var(--sans);font-weight:300;font-size:clamp(16px,2vw,24px);letter-spacing:.02em;color:var(--muted);line-height:1.55;margin-top:24px;max-width:34ch}
+h1 .thin{display:block;font-family:var(--sans);font-weight:300;font-size:clamp(16px,2vw,24px);letter-spacing:.02em;color:var(--ink-2);line-height:1.55;margin-top:24px;max-width:40ch}
 .hero-cta{display:flex;gap:14px;flex-wrap:wrap;margin:36px 0 0}
-.hero-img{position:relative;border-radius:200px 200px 18px 18px;overflow:hidden;aspect-ratio:3/4.05;box-shadow:0 40px 80px -50px rgba(0,0,0,.8)}
-.hero-img img{width:100%;height:100%;object-fit:cover;animation:kenburns 24s ease-in-out infinite alternate}
-@keyframes kenburns{from{transform:scale(1.02) translate(0,0)}to{transform:scale(1.1) translate(-1.5%,1%)}}
 .hero-stats{display:flex;margin-top:clamp(48px,9vh,96px);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
 .stat{flex:1;padding:clamp(18px,2.4vw,26px) 8px clamp(16px,2.2vw,24px);text-align:center;border-left:1px solid var(--line);min-width:0}
 .stat:first-child{border-left:none;text-align:left;padding-left:0}
@@ -312,7 +318,6 @@ footer.site{background:var(--navy-deep);color:#93a9c2;padding:clamp(50px,8vw,90p
 @media(max-width:1020px){
   .menu{display:none}
   .burger{display:flex}
-  .hero-grid{grid-template-columns:minmax(0,1fr) minmax(0,.85fr)}
   .svc-row{grid-template-columns:44px minmax(0,1fr) 38px}
   .svc-row p{display:none}
   .svc-preview{display:none}
@@ -321,16 +326,18 @@ footer.site{background:var(--navy-deep);color:#93a9c2;padding:clamp(50px,8vw,90p
 }
 @media(max-height:520px) and (orientation:landscape){
   .hero{padding-top:96px}
-  .hero-grid{grid-template-columns:1fr 1fr;align-items:center}
-  .hero-img{max-height:52vh;aspect-ratio:4/3}
   .hero-stats{margin-top:36px}
   .mobile-menu{justify-content:flex-start;padding-top:80px}
   .mobile-menu a{padding:9px 0;font-size:24px}
 }
 @media(max-width:860px){
   .logo-sub{display:none}
-  .hero-grid{grid-template-columns:1fr;gap:40px}
-  .hero-img{aspect-ratio:4/3.2;border-radius:200px 200px 16px 16px;max-height:58vh}
+  .hero{padding-top:clamp(110px,16vh,150px)}
+  .hero-bg::after{
+    background:
+      linear-gradient(180deg,rgba(10,26,48,.6) 0%,rgba(10,26,48,.45) 40%,var(--bg) 96%),
+      linear-gradient(90deg,rgba(10,26,48,.45),rgba(10,26,48,.45));
+  }
   .sec-head{grid-template-columns:1fr;gap:16px;align-items:start}
   .process{grid-template-columns:1fr}
   .process-head{position:static}
@@ -420,24 +427,18 @@ footer.site{background:var(--navy-deep);color:#93a9c2;padding:clamp(50px,8vw,90p
 </nav>
 
 <section class="hero" id="top">
+  <div class="hero-bg" aria-hidden="true">
+    <img src="hero-kitchen.jpg" alt="" fetchpriority="high"
+         onerror="this.onerror=null;this.src='https://image.qwenlm.ai/public_source/ec30df1a-4647-4ec6-96b6-c89f04754493/3f6e3c5e8-92c6-4338-8227-f921b5e7346e6636.png'">
+  </div>
   <div class="wrap">
-    <div class="hero-grid">
-      <div>
-        <p class="hero-kicker reveal">Кухни и мебель на заказ · Гомель / РБ</p>
-        <h1 class="reveal" style="--d:.08s">Мебель,<br>продуманная<br><span class="it">до мелочей</span>
-          <span class="thin">Проектируем и собираем кухни, шкафы и гостиные по вашим размерам. Замер и дизайн-проект — бесплатно. Доставка и сборка — тоже.</span>
-        </h1>
-        <div class="hero-cta reveal" style="--d:.16s">
-          <a class="btn" href="#contacts"><span>Бесплатный замер</span></a>
-          <a class="btn ghost" href="#portfolio"><span>Наши проекты</span></a>
-        </div>
-      </div>
-      <div class="hero-img reveal" style="--d:.12s">
-        <img src="hero-kitchen.jpg"
-             alt="Тёмная кухня с графитовыми фасадами, мраморным фартуком и LED-подсветкой"
-             fetchpriority="high"
-             onerror="this.onerror=null;this.src='https://image.qwenlm.ai/public_source/ec30df1a-4647-4ec6-96b6-c89f04754493/3f6e3c5e8-92c6-4338-8227-f921b5e7346e6636.png'">
-      </div>
+    <p class="hero-kicker reveal">Кухни и мебель на заказ · Гомель / РБ</p>
+    <h1 class="reveal" style="--d:.08s">Мебель,<br>продуманная<br><span class="it">до мелочей</span>
+      <span class="thin">Проектируем и собираем кухни, шкафы и гостиные по вашим размерам. Замер и дизайн-проект — бесплатно. Доставка и сборка — тоже.</span>
+    </h1>
+    <div class="hero-cta reveal" style="--d:.16s">
+      <a class="btn" href="#contacts"><span>Бесплатный замер</span></a>
+      <a class="btn ghost" href="#portfolio"><span>Наши проекты</span></a>
     </div>
     <div class="hero-stats reveal" style="--d:.2s">
       <div class="stat"><b data-count="193">0</b><span>проекта в ленте</span></div>
