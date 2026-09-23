@@ -5,9 +5,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <meta name="theme-color" content="#0a1a30">
 <title>Charm МЕБЕЛЬ — кухни и мебель на заказ в Гомеле | @charmmebell</title>
-<meta name="description" content="Кухни и мебель на заказ по Гомелю и области. Бесплатный замер и дизайн-проект, доставка и сборка. Гомель, ул. Ветковская, 2.">
+<meta name="description" content="Кухни и мебель на заказ по Гомелю и области. Замер, дизайн-проект, доставка и сборка. Гомель, ул. Ветковская, 2.">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/fontsource/css/manrope@latest/index.css">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/fontsource/css/prata@latest/index.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/fontsource/css/great-vibes@latest/index.css">
 <style>
 :root{
   --bg:#0a1a30;
@@ -23,8 +24,10 @@
   --line:rgba(151,180,210,.16);
   --steel:#5f96cd;
   --steel-2:#9cc0e2;
+  --red:#ff5a5a;
   --serif:"Prata",Georgia,serif;
   --sans:"Manrope",system-ui,-apple-system,sans-serif;
+  --script:"Great Vibes",cursive;
   --ease:cubic-bezier(.22,.8,.24,1);
   --safe-b:env(safe-area-inset-bottom,0px);
   --safe-t:env(safe-area-inset-top,0px);
@@ -91,15 +94,19 @@ a:hover .brand{transform:rotate(-6deg)}
 .logo-name em{font-style:italic}
 .logo-name b{font-weight:400;letter-spacing:.16em;font-size:.88em}
 .logo-sub{font-size:clamp(7.5px,.8vw,9px);letter-spacing:.24em;text-transform:uppercase;color:var(--muted);white-space:nowrap}
+
+/* телефон + «консультация» в шапке — виден всегда */
+.nav-consult{display:flex;align-items:center;gap:8px;flex:0 0 auto;transition:opacity .3s}
+.nav-consult:hover{opacity:.8}
+.nav-consult svg{width:14px;height:14px;flex:0 0 14px;fill:var(--steel-2)}
+.nav-consult b{display:block;font-size:clamp(11.5px,1.2vw,13.5px);font-weight:800;letter-spacing:.02em;color:var(--heading);white-space:nowrap;line-height:1.3}
+.nav-consult small{display:block;font-size:clamp(7.5px,.85vw,9px);font-weight:700;letter-spacing:.26em;text-transform:uppercase;color:var(--steel-2);line-height:1.5;white-space:nowrap}
+
 .menu{display:flex;gap:clamp(14px,1.8vw,22px);font-size:11.5px;font-weight:700;letter-spacing:.16em;text-transform:uppercase}
 .menu a{padding:8px 0;position:relative;color:var(--ink-2);white-space:nowrap}
 .menu a::after{content:"";position:absolute;left:0;bottom:4px;height:1px;width:100%;background:var(--steel-2);transform:scaleX(0);transform-origin:right;transition:transform .4s var(--ease)}
 .menu a:hover::after{transform:scaleX(1);transform-origin:left}
 .header-right{display:flex;align-items:center;gap:clamp(8px,1.2vw,14px)}
-.header-phone{font-size:12.5px;font-weight:800;letter-spacing:.04em;white-space:nowrap;color:var(--heading);transition:color .3s}
-.header-phone:hover{color:var(--steel-2)}
-.phone-ico{display:none;width:40px;height:40px;flex:0 0 40px;border-radius:50%;border:1px solid rgba(151,180,210,.25);background:rgba(255,255,255,.04);place-items:center;color:var(--heading)}
-.phone-ico svg{width:16px;height:16px;fill:currentColor}
 
 .btn{position:relative;display:inline-flex;align-items:center;justify-content:center;gap:10px;padding:16px 30px;border:1px solid #eaf2fb;border-radius:100px;font-size:12.5px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;overflow:hidden;isolation:isolate;color:#0d2440;background:#eaf2fb;min-height:48px;transition:transform .35s var(--ease)}
 .btn span{position:relative;z-index:2;transition:color .4s var(--ease)}
@@ -128,7 +135,7 @@ a:hover .brand{transform:rotate(-6deg)}
 .mobile-menu .mm-foot{margin-top:30px;font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:#7e93ab;opacity:1;transform:none}
 
 /* ============ hero: фото как фон ============ */
-.hero{position:relative;padding:clamp(120px,18vh,200px) 0 0;overflow:hidden}
+.hero{position:relative;padding:clamp(110px,16vh,180px) 0 0;overflow:hidden}
 .hero-bg{position:absolute;inset:0;z-index:0;pointer-events:none}
 .hero-bg img{width:100%;height:100%;object-fit:cover;object-position:center 60%;animation:kenburns 26s ease-in-out infinite alternate}
 .hero-bg::after{
@@ -140,31 +147,63 @@ a:hover .brand{transform:rotate(-6deg)}
 .hero .wrap{position:relative;z-index:1}
 @keyframes kenburns{from{transform:scale(1.02) translate(0,0)}to{transform:scale(1.1) translate(-1.5%,1%)}}
 
-/* hero-top: телефон-консультация + кредит (над заголовком) */
-.hero-top{display:flex;flex-wrap:wrap;align-items:stretch;gap:12px 14px;margin-bottom:26px}
-.hero-consult{display:inline-flex;align-items:center;gap:10px;padding:10px 20px 10px 14px;border:1px solid rgba(156,192,226,.5);border-radius:100px;background:rgba(8,21,39,.55);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);transition:border-color .3s,transform .3s var(--ease)}
-.hero-consult:hover{border-color:var(--steel-2);transform:translateY(-2px)}
-.hero-consult svg{width:17px;height:17px;flex:0 0 17px;fill:var(--steel-2)}
-.hero-consult b{font-size:clamp(14px,1.6vw,18px);font-weight:800;letter-spacing:.02em;color:var(--heading);white-space:nowrap}
-.hero-consult span{font-size:10px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--steel-2);white-space:nowrap}
-.hero-credit{display:flex;flex-direction:column;justify-content:center;gap:2px;padding:9px 22px;border:1px dashed rgba(156,192,226,.45);border-radius:16px;background:rgba(8,21,39,.35)}
-.hero-credit .cr-main{font-size:clamp(12.5px,1.3vw,15px);font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--steel-2);white-space:nowrap}
-.hero-credit .cr-name{font-family:var(--serif);font-style:italic;font-size:clamp(14px,1.5vw,18px);line-height:1.2;color:var(--heading)}
+/* ===== «открытка»: вся шапка страницы по центру ===== */
+.hero-intro{display:flex;flex-direction:column;align-items:center;text-align:center}
+
+/* кредитная плашка */
+.hero-credit{display:inline-flex;flex-direction:column;align-items:center;gap:4px;padding:14px 28px;border:1px dashed rgba(156,192,226,.4);border-radius:18px;background:rgba(8,21,39,.35);margin-bottom:26px}
+.hero-credit .cr-main{font-weight:600;color:var(--heading);font-size:clamp(13px,1.4vw,16px);letter-spacing:.04em;line-height:1.2;white-space:nowrap}
+.hero-credit .cr-main b{color:var(--red);font-weight:800;font-size:clamp(19px,2.2vw,27px);letter-spacing:.05em;text-transform:uppercase;text-shadow:0 0 22px rgba(255,90,90,.4)}
+.hero-credit .cr-name{font-family:var(--serif);font-style:italic;font-size:clamp(15px,1.6vw,20px);line-height:1.25;color:var(--heading)}
 
 .hero-kicker{display:flex;align-items:center;gap:14px;font-size:clamp(10px,1vw,11.5px);font-weight:700;letter-spacing:.3em;text-transform:uppercase;color:var(--steel-2)}
-.hero-kicker::before{content:"";width:44px;height:1px;background:var(--steel-2);flex:0 0 auto}
-h1{font-family:var(--serif);font-weight:400;font-size:clamp(36px,6.6vw,86px);line-height:1.04;letter-spacing:.005em;margin:24px 0 0;color:var(--heading)}
-h1 .it{font-style:italic;color:var(--steel-2);white-space:nowrap}
-h1 .thin{display:block;font-family:var(--sans);font-weight:300;font-size:clamp(16px,2vw,24px);letter-spacing:.02em;color:var(--ink-2);line-height:1.55;margin-top:24px;max-width:40ch}
-.hero-cta{display:flex;gap:14px;flex-wrap:wrap;margin:36px 0 0}
+.hero-kicker::before,.hero-kicker::after{content:"";width:44px;height:1px;background:var(--steel-2);flex:0 0 auto}
+
+/* Charmmebel — рукописная подпись, крупно, по центру */
+.hero-brand{
+  font-family:var(--script);font-weight:400;
+  font-size:clamp(58px,11vw,128px);
+  line-height:1.05;letter-spacing:.01em;
+  color:var(--heading);
+  margin:clamp(10px,2vh,20px) 0 0;
+  text-shadow:0 0 46px rgba(156,192,226,.28),0 2px 18px rgba(0,0,0,.45);
+}
+
+/* слоган — спокойный, без акцента */
+h1{font-family:var(--serif);font-weight:400;font-style:italic;font-size:clamp(24px,3.4vw,40px);line-height:1.25;letter-spacing:.01em;margin:clamp(10px,2vh,18px) 0 0;color:var(--ink-2)}
+.hero-thin{font-family:var(--sans);font-weight:300;font-size:clamp(15px,1.8vw,21px);letter-spacing:.02em;color:var(--ink-2);line-height:1.6;margin-top:clamp(20px,3.5vh,36px);max-width:54ch}
+.hero-cta{display:flex;justify-content:center;gap:14px;flex-wrap:wrap;margin:clamp(22px,4vh,40px) 0 0}
 .hero-stats{display:flex;margin-top:clamp(48px,9vh,96px);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
 .stat{flex:1;padding:clamp(18px,2.4vw,26px) 8px clamp(16px,2.2vw,24px);text-align:center;border-left:1px solid var(--line);min-width:0}
 .stat:first-child{border-left:none;text-align:left;padding-left:0}
 .stat:last-child{text-align:right;padding-right:0}
-.stat b{display:block;font-family:var(--serif);font-size:clamp(24px,3vw,42px);font-weight:400;line-height:1.1;color:var(--heading)}
+.stat b{display:block;font-family:var(--serif);font-size:clamp(22px,2.8vw,38px);font-weight:400;line-height:1.1;color:var(--heading)}
 .stat span{font-size:clamp(9px,.9vw,11px);letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
 
-/* ============ marquee ============ */
+/* надпись «Наши работы» над бегущей строкой */
+.works-label{display:flex;align-items:center;justify-content:center;gap:14px;font-size:clamp(11px,1.2vw,14px);font-weight:800;letter-spacing:.34em;text-transform:uppercase;color:var(--steel-2);margin:clamp(28px,4.5vh,48px) 0 0}
+.works-label::before,.works-label::after{content:"";width:44px;height:1px;background:var(--steel-2);flex:0 0 auto}
+
+/* ============ бегущая строка из фото (спокойная, некрупная) ============ */
+.photo-marquee{
+  position:relative;z-index:1;
+  margin:clamp(16px,2.5vh,26px) 0 0;
+  overflow:hidden;
+  -webkit-mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent);
+  mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent);
+}
+.pg-track{display:flex;width:max-content;animation:pmove 60s linear infinite;will-change:transform}
+.photo-marquee:hover .pg-track{animation-play-state:paused}
+.pg-track img{
+  height:clamp(80px,12vw,140px);width:auto;flex:0 0 auto;
+  object-fit:cover;border-radius:10px;
+  margin-right:clamp(8px,1vw,14px);
+  opacity:.88;
+  box-shadow:0 10px 24px -16px rgba(0,0,0,.7);
+}
+@keyframes pmove{to{transform:translateX(-50%)}}
+
+/* ============ marquee текстовый ============ */
 .marquee{background:#14304f;color:#dbe6f1;overflow:hidden;padding:clamp(12px,1.6vw,16px) 0;margin-top:clamp(56px,10vh,110px)}
 .marquee-track{display:flex;width:max-content;animation:mq 34s linear infinite}
 .marquee span{padding:0 clamp(14px,2vw,24px);font-size:clamp(10.5px,1.1vw,12.5px);letter-spacing:.3em;text-transform:uppercase;white-space:nowrap}
@@ -299,8 +338,7 @@ footer.site{background:var(--navy-deep);color:#93a9c2;padding:clamp(50px,8vw,90p
 .socials a{width:46px;height:46px;border:1px solid rgba(219,230,241,.25);border-radius:50%;display:grid;place-items:center;color:#e7eef6;transition:.35s var(--ease)}
 .socials a:hover{background:var(--steel);border-color:var(--steel);transform:translateY(-3px)}
 .socials svg{width:18px;height:18px;fill:currentColor}
-.f-word{font-family:var(--serif);font-size:clamp(38px,12vw,180px);line-height:.95;color:transparent;-webkit-text-stroke:1px rgba(219,230,241,.32);letter-spacing:.02em;white-space:nowrap;user-select:none;padding-bottom:16px}
-.f-word em{font-style:italic}
+.f-word{font-family:var(--script);font-size:clamp(52px,11vw,150px);line-height:1.1;color:transparent;-webkit-text-stroke:1px rgba(219,230,241,.32);letter-spacing:.02em;white-space:nowrap;user-select:none;padding-bottom:20px;text-align:center}
 .f-bottom{border-top:1px solid rgba(219,230,241,.15);padding-top:24px;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;font-size:clamp(9.5px,.9vw,11.5px);letter-spacing:.14em;text-transform:uppercase}
 
 /* toast / lightbox */
@@ -324,8 +362,8 @@ footer.site{background:var(--navy-deep);color:#93a9c2;padding:clamp(50px,8vw,90p
   .nav-shell{width:min(1320px,calc(100% - 40px))}
 }
 @media(max-width:1180px){
-  .menu{gap:14px;font-size:11px}
-  .header-phone{display:none}
+  .menu{gap:12px;font-size:10.5px}
+  .logo-sub{display:none}
 }
 @media(max-width:1020px){
   .menu{display:none}
@@ -343,8 +381,7 @@ footer.site{background:var(--navy-deep);color:#93a9c2;padding:clamp(50px,8vw,90p
   .mobile-menu a{padding:9px 0;font-size:24px}
 }
 @media(max-width:860px){
-  .logo-sub{display:none}
-  .hero{padding-top:clamp(110px,16vh,150px)}
+  .hero{padding-top:clamp(105px,15vh,140px)}
   .hero-bg::after{
     background:
       linear-gradient(180deg,rgba(10,26,48,.6) 0%,rgba(10,26,48,.45) 40%,var(--bg) 96%),
@@ -364,13 +401,11 @@ footer.site{background:var(--navy-deep);color:#93a9c2;padding:clamp(50px,8vw,90p
   .g-item.a,.g-item.b,.g-item.c,.g-item.d,.g-item.e,.g-item.f{aspect-ratio:4/3}
   .g-cap{transform:none;opacity:1;padding-top:56px}
   .mat{flex-basis:min(78vw,320px)}
+  .pg-track img{height:clamp(72px,20vw,110px)}
+  .hero-kicker::before,.hero-kicker::after,.works-label::before,.works-label::after{width:24px}
 }
 @media(max-width:520px){
   .nav-bar .btn.sm{display:none}
-  .phone-ico{display:grid}
-  .hero-top{flex-direction:column;align-items:stretch}
-  .hero-consult{justify-content:center}
-  .hero-credit{align-items:center;text-align:center}
   .hero-stats{flex-wrap:wrap}
   .stat{flex:1 1 50%;text-align:left!important;padding-left:0;border-left:none;border-top:1px solid var(--line);padding-top:16px}
   .stat:first-child,.stat:nth-child(2){border-top:none}
@@ -385,8 +420,7 @@ footer.site{background:var(--navy-deep);color:#93a9c2;padding:clamp(50px,8vw,90p
   .logo-text{display:none}
   .nav-bar{padding-left:10px}
   .brand{--s:36px}
-  .hero-consult{flex-wrap:wrap;row-gap:2px;padding:10px 14px}
-  .hero-consult span{white-space:normal}
+  .hero-brand{font-size:52px}
 }
 @media(hover:none){
   .g-cap{transform:none;opacity:1;padding-top:56px}
@@ -415,6 +449,13 @@ footer.site{background:var(--navy-deep);color:#93a9c2;padding:clamp(50px,8vw,90p
         <span class="logo-sub">@charmmebell · Гомель</span>
       </span>
     </a>
+    <a class="nav-consult" href="tel:+375447878770" aria-label="Позвонить для консультации">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.6 21 3 13.4 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.2.2 2.4.6 3.6.1.3 0 .7-.2 1l-2.3 2.2z"/></svg>
+      <span>
+        <b>+375 (44) 78-78-770</b>
+        <small>консультация</small>
+      </span>
+    </a>
     <nav class="menu" aria-label="Основное меню">
       <a href="#services">Услуги</a>
       <a href="#portfolio">Портфолио</a>
@@ -424,9 +465,7 @@ footer.site{background:var(--navy-deep);color:#93a9c2;padding:clamp(50px,8vw,90p
       <a href="#contacts">Контакты</a>
     </nav>
     <div class="header-right">
-      <a class="header-phone" href="tel:+375447878770">+375 (44) 78-78-770</a>
-      <a class="phone-ico" href="tel:+375447878770" aria-label="Позвонить"><svg viewBox="0 0 24 24"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.6 21 3 13.4 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.2.2 2.4.6 3.6.1.3 0 .7-.2 1l-2.3 2.2z"/></svg></a>
-      <a class="btn sm" href="#contacts"><span>Замер — бесплатно</span></a>
+      <a class="btn sm" href="#contacts"><span>Заказать замер</span></a>
       <button class="burger" id="burger" aria-label="Открыть меню" aria-expanded="false"><span></span><span></span><span></span></button>
     </div>
   </div>
@@ -448,38 +487,56 @@ footer.site{background:var(--navy-deep);color:#93a9c2;padding:clamp(50px,8vw,90p
     <img src="hero-kitchen.jpg" alt="" fetchpriority="high"
          onerror="this.onerror=null;this.src='https://image.qwenlm.ai/public_source/ec30df1a-4647-4ec6-96b6-c89f04754493/3f6e3c5e8-92c6-4338-8227-f921b5e7346e6636.png'">
   </div>
+
   <div class="wrap">
-    <div class="hero-top reveal">
-      <a class="hero-consult" href="tel:+375447878770" aria-label="Позвонить для консультации">
-        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.6 21 3 13.4 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.2.2 2.4.6 3.6.1.3 0 .7-.2 1l-2.3 2.2z"/></svg>
-        <b>+375 (44) 78-78-770</b>
-        <span>консультация</span>
-      </a>
-      <p class="hero-credit">
-        <span class="cr-main">Кредит под 4% годовых</span>
-        <span class="cr-name">На «сваё»</span>
-      </p>
+    <div class="hero-intro">
+      <div class="hero-credit reveal">
+        <span class="cr-main"><b>Кредит</b> под <b>4%</b> годовых</span>
+        <span class="cr-name">«На сваё»</span>
+      </div>
+      <p class="hero-kicker reveal">Кухни и мебель на заказ · Гомель / РБ</p>
+      <p class="hero-brand reveal" style="--d:.08s">Charmmebel</p>
+      <h1 class="reveal" style="--d:.12s">Мебель, продуманная до мелочей</h1>
+      <p class="hero-thin reveal" style="--d:.16s">Проектируем и собираем кухни, шкафы-купе, гостиные, прихожие, детские по вашим размерам.</p>
+      <p class="works-label reveal" style="--d:.2s">Наши работы</p>
     </div>
-    <p class="hero-kicker reveal">Кухни и мебель на заказ · Гомель / РБ</p>
-    <h1 class="reveal" style="--d:.08s">Мебель,<br>продуманная<br><span class="it">до мелочей</span>
-      <span class="thin">Проектируем и собираем кухни, шкафы и гостиные по вашим размерам. Замер и дизайн-проект — бесплатно. Доставка и сборка — тоже.</span>
-    </h1>
-    <div class="hero-cta reveal" style="--d:.16s">
-      <a class="btn" href="#contacts"><span>Бесплатный замер</span></a>
-      <a class="btn ghost" href="#portfolio"><span>Наши проекты</span></a>
+  </div>
+
+  <!-- ===== БЕГУЩАЯ СТРОКА ИЗ ФОТО (над кнопкой «Заказать замер») =====
+       КАК ДОБАВИТЬ СВОЁ ФОТО:
+       1) загрузите файл в репозиторий (рядом с index.html), например "kitchen1.jpg"
+       2) добавьте строку <img src="kitchen1.jpg" alt="" loading="lazy"> ниже.
+       Строка едет автоматически при любом количестве фото. -->
+  <div class="photo-marquee" aria-hidden="true">
+    <div class="pg-track" id="pgTrack">
+      <img src="https://image.qwenlm.ai/public_source/ec30df1a-4647-4ec6-96b6-c89f04754493/6f6e3c5e8-92c6-4338-8227-f921b5e7346e8312.png" alt="" loading="lazy">
+      <img src="https://image.qwenlm.ai/public_source/ec30df1a-4647-4ec6-96b6-c89f04754493/0f6e3c5e8-92c6-4338-8227-f921b5e7346e4344.png" alt="" loading="lazy">
+      <img src="https://image.qwenlm.ai/public_source/ec30df1a-4647-4ec6-96b6-c89f04754493/4f6e3c5e8-92c6-4338-8227-f921b5e7346e5911.png" alt="" loading="lazy">
+      <img src="https://image.qwenlm.ai/public_source/ec30df1a-4647-4ec6-96b6-c89f04754493/4f6e3c5e8-92c6-4338-8227-f921b5e7346e1421.png" alt="" loading="lazy">
+      <img src="https://image.qwenlm.ai/public_source/ec30df1a-4647-4ec6-96b6-c89f04754493/1f6e3c5e8-92c6-4338-8227-f921b5e7346e4651.png" alt="" loading="lazy">
+      <img src="https://image.qwenlm.ai/public_source/ec30df1a-4647-4ec6-96b6-c89f04754493/1f6e3c5e8-92c6-4338-8227-f921b5e7346e9168.png" alt="" loading="lazy">
     </div>
-    <div class="hero-stats reveal" style="--d:.2s">
+  </div>
+
+  <div class="wrap">
+    <div class="hero-intro">
+      <div class="hero-cta reveal" style="--d:.24s">
+        <a class="btn" href="#contacts"><span>Заказать замер</span></a>
+        <a class="btn ghost" href="#portfolio"><span>Портфолио</span></a>
+      </div>
+    </div>
+    <div class="hero-stats reveal" style="--d:.28s">
       <div class="stat"><b data-count="193">0</b><span>проекта в ленте</span></div>
       <div class="stat"><b data-count="1700">0</b><span>подписчиков IG</span></div>
-      <div class="stat"><b>0 ₽</b><span>замер и проект</span></div>
-      <div class="stat"><b>0 ₽</b><span>доставка и сборка</span></div>
+      <div class="stat"><b>Гомель</b><span>и вся область</span></div>
+      <div class="stat"><b>Пн–Сб</b><span>9:00–19:00</span></div>
     </div>
   </div>
 </section>
 
 <div class="marquee" aria-hidden="true">
   <div class="marquee-track" id="marqueeTrack">
-    <span>Кухни на заказ <i>✦</i></span><span>Шкафы-купе <i>✦</i></span><span>Прихожие <i>✦</i></span><span>TV-зоны <i>✦</i></span><span>Столешницы EGGER <i>✦</i></span><span>Фурнитура Blum <i>✦</i></span><span>Дизайн-проект бесплатно <i>✦</i></span>
+    <span>Кухни на заказ <i>✦</i></span><span>Шкафы-купе <i>✦</i></span><span>Прихожие <i>✦</i></span><span>Гостиные <i>✦</i></span><span>Детские <i>✦</i></span><span>Столешницы EGGER <i>✦</i></span><span>Фурнитура Blum <i>✦</i></span><span>Дизайн-проект <i>✦</i></span>
   </div>
 </div>
 
@@ -509,18 +566,18 @@ footer.site{background:var(--navy-deep);color:#93a9c2;padding:clamp(50px,8vw,90p
         <span class="go">→</span>
       </a>
       <a class="svc-row reveal" href="#contacts" data-img="https://image.qwenlm.ai/public_source/ec30df1a-4647-4ec6-96b6-c89f04754493/4f6e3c5e8-92c6-4338-8227-f921b5e7346e1421.png">
-        <span class="idx">04</span><h3>TV-зоны и гостиные</h3>
+        <span class="idx">04</span><h3>Гостиные и TV-зоны</h3>
         <p>Стеновые панели с рейками, подвесные тумбы, скрытая подсветка. Провода и техника — аккуратно спрятаны.</p>
         <span class="go">→</span>
       </a>
       <a class="svc-row reveal" href="#contacts" data-img="https://image.qwenlm.ai/public_source/ec30df1a-4647-4ec6-96b6-c89f04754493/4f6e3c5e8-92c6-4338-8227-f921b5e7346e5911.png">
-        <span class="idx">05</span><h3>Столешницы и мойки</h3>
-        <p>EGGER, Form Style, камень. Мойки подствольного монтажа, стеновые панели в цвет столешницы, аккуратные примыкания.</p>
+        <span class="idx">05</span><h3>Детские и кабинеты</h3>
+        <p>Безопасные материалы, растущие системы хранения, рабочие места и кровати по индивидуальным размерам.</p>
         <span class="go">→</span>
       </a>
       <a class="svc-row reveal" href="#contacts" data-img="https://image.qwenlm.ai/public_source/ec30df1a-4647-4ec6-96b6-c89f04754493/1f6e3c5e8-92c6-4338-8227-f921b5e7346e4651.png">
         <span class="idx">06</span><h3>Мебель по вашему эскизу</h3>
-        <p>Комоды, стеллажи, детские, кабинеты и нестандартные решения. Ваша идея — наша работа.</p>
+        <p>Комоды, стеллажи и нестандартные решения. Ваша идея — наша работа.</p>
         <span class="go">→</span>
       </a>
     </div>
@@ -541,7 +598,7 @@ footer.site{background:var(--navy-deep);color:#93a9c2;padding:clamp(50px,8vw,90p
       <button class="filter-btn active" data-filter="all" role="tab" aria-selected="true">Все</button>
       <button class="filter-btn" data-filter="kitchen" role="tab" aria-selected="false">Кухни</button>
       <button class="filter-btn" data-filter="wardrobe" role="tab" aria-selected="false">Шкафы</button>
-      <button class="filter-btn" data-filter="tv" role="tab" aria-selected="false">TV-зоны</button>
+      <button class="filter-btn" data-filter="tv" role="tab" aria-selected="false">Гостиные</button>
     </div>
     <div class="gallery" id="gallery">
       <figure class="g-item a reveal" tabindex="0" data-cat="kitchen" data-title="Кухня «Бежевый минимализм»" data-src="https://image.qwenlm.ai/public_source/ec30df1a-4647-4ec6-96b6-c89f04754493/6f6e3c5e8-92c6-4338-8227-f921b5e7346e8312.png">
@@ -556,9 +613,9 @@ footer.site{background:var(--navy-deep);color:#93a9c2;padding:clamp(50px,8vw,90p
         <img loading="lazy" src="https://image.qwenlm.ai/public_source/ec30df1a-4647-4ec6-96b6-c89f04754493/4f6e3c5e8-92c6-4338-8227-f921b5e7346e5911.png" alt="Тёмная кухня с деревянными фасадами и чёрным камнем">
         <figcaption class="g-cap"><span><b>Графит и орех</b><small>Кухня · чёрный камень</small></span><span class="plus">+</span></figcaption>
       </figure>
-      <figure class="g-item d reveal" style="--d:.06s" tabindex="0" data-cat="tv" data-title="TV-зона с рейками и зеркалом" data-src="https://image.qwenlm.ai/public_source/ec30df1a-4647-4ec6-96b6-c89f04754493/4f6e3c5e8-92c6-4338-8227-f921b5e7346e1421.png">
-        <img loading="lazy" src="https://image.qwenlm.ai/public_source/ec30df1a-4647-4ec6-96b6-c89f04754493/4f6e3c5e8-92c6-4338-8227-f921b5e7346e1421.png" alt="TV-зона с деревянными рейками, зеркалом и туалетным столиком">
-        <figcaption class="g-cap"><span><b>TV-зона с рейками</b><small>Гостиная · LED-подсветка</small></span><span class="plus">+</span></figcaption>
+      <figure class="g-item d reveal" style="--d:.06s" tabindex="0" data-cat="tv" data-title="Гостиная с рейками и зеркалом" data-src="https://image.qwenlm.ai/public_source/ec30df1a-4647-4ec6-96b6-c89f04754493/4f6e3c5e8-92c6-4338-8227-f921b5e7346e1421.png">
+        <img loading="lazy" src="https://image.qwenlm.ai/public_source/ec30df1a-4647-4ec6-96b6-c89f04754493/4f6e3c5e8-92c6-4338-8227-f921b5e7346e1421.png" alt="Гостиная с деревянными рейками, зеркалом и туалетным столиком">
+        <figcaption class="g-cap"><span><b>Гостиная с рейками</b><small>TV-зона · LED-подсветка</small></span><span class="plus">+</span></figcaption>
       </figure>
       <figure class="g-item e reveal" tabindex="0" data-cat="kitchen" data-title="Кухня «Тёмный лофт»" data-src="https://image.qwenlm.ai/public_source/ec30df1a-4647-4ec6-96b6-c89f04754493/1f6e3c5e8-92c6-4338-8227-f921b5e7346e4651.png">
         <img loading="lazy" src="https://image.qwenlm.ai/public_source/ec30df1a-4647-4ec6-96b6-c89f04754493/1f6e3c5e8-92c6-4338-8227-f921b5e7346e4651.png" alt="Кухня в графитовом цвете с островом и деревянной столешницей">
@@ -585,10 +642,10 @@ footer.site{background:var(--navy-deep);color:#93a9c2;padding:clamp(50px,8vw,90p
       <div class="tl">
         <div class="tl-item reveal"><span class="k">Шаг 01</span><h3>Заявка</h3><p>Пишете в директ Instagram или звоните +375 (44) 78-78-770 — отвечаем в течение рабочего часа.</p></div>
         <div class="tl-item reveal"><span class="k">Шаг 02</span><h3>Консультация</h3><p>Созваниваемся, обсуждаем предпочтения по дизайну, бюджет и размеры помещения. Подсказываем, на чём можно сэкономить без потери качества.</p></div>
-        <div class="tl-item reveal"><span class="k">Шаг 03</span><h3>Бесплатный замер</h3><p>Мастер приезжает в удобное время, снимает точные размеры, учитывает трубы, розетки и кривизну стен.</p></div>
-        <div class="tl-item reveal"><span class="k">Шаг 04</span><h3>Дизайн-проект</h3><p>Готовим 3D-проект с планировкой, цветами фасадов и фурнитурой — бесплатно на первой консультации.</p></div>
+        <div class="tl-item reveal"><span class="k">Шаг 03</span><h3>Замер</h3><p>Мастер приезжает в удобное время, снимает точные размеры, учитывает трубы, розетки и кривизну стен.</p></div>
+        <div class="tl-item reveal"><span class="k">Шаг 04</span><h3>Дизайн-проект</h3><p>Готовим 3D-проект с планировкой, цветами фасадов и фурнитурой.</p></div>
         <div class="tl-item reveal"><span class="k">Шаг 05</span><h3>Производство</h3><p>Изготавливаем мебель и держим вас в курсе каждого этапа — от распила до присадки фурнитуры.</p></div>
-        <div class="tl-item reveal"><span class="k">Шаг 06</span><h3>Доставка и сборка</h3><p>Привозим и собираем бесплатно. Убираем за собой — вам остаётся только пользоваться.</p></div>
+        <div class="tl-item reveal"><span class="k">Шаг 06</span><h3>Доставка и сборка</h3><p>Привозим и собираем. Убираем за собой — вам остаётся только пользоваться.</p></div>
       </div>
     </div>
   </div>
@@ -631,7 +688,7 @@ footer.site{background:var(--navy-deep);color:#93a9c2;padding:clamp(50px,8vw,90p
       </article>
       <article class="rev reveal" style="--d:.08s">
         <span class="q">“</span>
-        <blockquote>Приехали по рекомендации знакомых. Замер и проект бесплатные, доставку тоже взяли на себя. Кухня стоит уже несколько лет — как новая, фасады не выцвели, доводчики работают мягко.</blockquote>
+        <blockquote>Приехали по рекомендации знакомых. Замер и проект сделали быстро, доставку тоже взяли на себя. Кухня стоит уже несколько лет — как новая, фасады не выцвели, доводчики работают мягко.</blockquote>
         <footer><span class="ava">КА</span><span><b>Кристина и Андрей</b><small>столешница Form Style · Гомель</small></span><span class="stars">★★★★★</span></footer>
       </article>
       <article class="rev reveal" style="--d:.16s">
@@ -641,8 +698,8 @@ footer.site{background:var(--navy-deep);color:#93a9c2;padding:clamp(50px,8vw,90p
       </article>
       <article class="rev reveal" style="--d:.24s">
         <span class="q">“</span>
-        <blockquote>Сложный проект: кухня с интеграцией техники и TV-зона с рейками в гостиной. Дизайнер предложил решения, о которых мы сами не думали. Смета после замера не изменилась ни на рубль.</blockquote>
-        <footer><span class="ava">ДС</span><span><b>Дмитрий С.</b><small>кухня + TV-зона · Гомель</small></span><span class="stars">★★★★★</span></footer>
+        <blockquote>Сложный проект: кухня с интеграцией техники и гостиная с рейками. Дизайнер предложил решения, о которых мы сами не думали. Смета после замера не изменилась ни на рубль.</blockquote>
+        <footer><span class="ava">ДС</span><span><b>Дмитрий С.</b><small>кухня + гостиная · Гомель</small></span><span class="stars">★★★★★</span></footer>
       </article>
     </div>
   </div>
@@ -655,12 +712,12 @@ footer.site{background:var(--navy-deep);color:#93a9c2;padding:clamp(50px,8vw,90p
         <span class="sec-num reveal">(06) — Контакты</span>
         <h2 class="reveal" style="--d:.06s">Обсудим ваш <span class="it">проект?</span></h2>
       </div>
-      <p class="reveal" style="--d:.12s">Оставьте заявку — перезвоним в течение рабочего часа, ответим на вопросы и запишем на бесплатный замер.</p>
+      <p class="reveal" style="--d:.12s">Оставьте заявку — перезвоним в течение рабочего часа, ответим на вопросы и запишем на замер.</p>
     </div>
     <div class="cta">
       <div class="form-card reveal">
         <h3>Заявка на замер</h3>
-        <p class="sub">Это бесплатно и ни к чему не обязывает.</p>
+        <p class="sub">Ни к чему не обязывает.</p>
         <form id="leadForm" novalidate>
           <div class="field">
             <label for="fname">Ваше имя</label>
@@ -726,10 +783,10 @@ footer.site{background:var(--navy-deep);color:#93a9c2;padding:clamp(50px,8vw,90p
         </nav>
       </div>
     </div>
-    <div class="f-word"><em>Charm</em> МЕБЕЛЬ</div>
+    <div class="f-word">Charmmebel</div>
     <div class="f-bottom">
       <span>© <span id="year">2025</span> Charm МЕБЕЛЬ · Гомель</span>
-      <span>Кухни · Шкафы · Прихожие · TV-зоны</span>
+      <span>Кухни · Шкафы · Гостиные · Детские</span>
     </div>
   </div>
 </footer>
@@ -775,7 +832,11 @@ footer.site{background:var(--navy-deep);color:#93a9c2;padding:clamp(50px,8vw,90p
   });
   $$('#mobileMenu a').forEach(function(a){a.addEventListener('click',closeMenu)});
 
-  /* бегущая строка: дублируем трек для бесшовности */
+  /* бегущая строка из фото: дублируем для бесшовности */
+  var pg=$('#pgTrack');
+  if(pg){pg.innerHTML+=pg.innerHTML;}
+
+  /* текстовая бегущая строка */
   var track=$('#marqueeTrack');
   if(track){track.innerHTML+=track.innerHTML;}
 
