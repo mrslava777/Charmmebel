@@ -8,7 +8,7 @@
 <meta name="description" content="Кухни и мебель на заказ по Гомелю и области. Замер, дизайн-проект, доставка и сборка. Гомель, ул. Ветковская, 2.">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/fontsource/css/manrope@latest/index.css">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/fontsource/css/prata@latest/index.css">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/fontsource/css/great-vibes@latest/index.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/fontsource/css/mrs-saint-delafield@latest/index.css">
 <style>
 :root{
   --bg:#0a1a30;
@@ -27,7 +27,7 @@
   --red:#ff5a5a;
   --serif:"Prata",Georgia,serif;
   --sans:"Manrope",system-ui,-apple-system,sans-serif;
-  --script:"Great Vibes",cursive;
+  --script:"Mrs Saint Delafield",cursive;
   --ease:cubic-bezier(.22,.8,.24,1);
   --safe-b:env(safe-area-inset-bottom,0px);
   --safe-t:env(safe-area-inset-top,0px);
@@ -144,7 +144,9 @@ a:hover .brand{transform:rotate(-6deg)}
     linear-gradient(180deg,rgba(10,26,48,.45) 0%,rgba(10,26,48,0) 26%,rgba(10,26,48,0) 58%,var(--bg) 98%),
     linear-gradient(90deg,rgba(10,26,48,.96) 0%,rgba(10,26,48,.88) 40%,rgba(10,26,48,.6) 72%,rgba(10,26,48,.36) 100%);
 }
-.hero .wrap{position:relative;z-index:1}
+/* ВАЖНО: у .wrap нет z-index — чтобы mix-blend-mode логотипа
+   работал поверх фонового фото и градиента */
+.hero .wrap{position:relative}
 @keyframes kenburns{from{transform:scale(1.02) translate(0,0)}to{transform:scale(1.1) translate(-1.5%,1%)}}
 
 /* ===== «открытка»: вся шапка страницы по центру ===== */
@@ -159,15 +161,25 @@ a:hover .brand{transform:rotate(-6deg)}
 .hero-kicker{display:flex;align-items:center;gap:14px;font-size:clamp(10px,1vw,11.5px);font-weight:700;letter-spacing:.3em;text-transform:uppercase;color:var(--steel-2)}
 .hero-kicker::before,.hero-kicker::after{content:"";width:44px;height:1px;background:var(--steel-2);flex:0 0 auto}
 
-/* Charmmebel — рукописная подпись, крупно, по центру */
-.hero-brand{
-  font-family:var(--script);font-weight:400;
-  font-size:clamp(58px,11vw,128px);
-  line-height:1.05;letter-spacing:.01em;
-  color:var(--heading);
-  margin:clamp(10px,2vh,20px) 0 0;
-  text-shadow:0 0 46px rgba(156,192,226,.28),0 2px 18px rgba(0,0,0,.45);
+/* ===== Логотип-картинка «Charm МЕБЕЛЬ» =====
+   mix-blend-mode:screen растворяет чёрный фон картинки
+   в тёмном фоне сайта — остаётся только синее письмо. */
+.hero-brand{margin:clamp(10px,2vh,20px) 0 0;width:100%}
+.crop-logo{display:block;aspect-ratio:1.9/1;overflow:hidden;margin-inline:auto}
+.hero-brand .crop-logo{width:clamp(300px,58vw,700px)}
+.crop-logo img{
+  display:block;width:100%;height:100%;
+  object-fit:cover;object-position:center 52%;
+  background:transparent;
+  mix-blend-mode:screen;
 }
+/* запасной текстовый вариант, если logo.png ещё не загружен */
+.hb-fallback,.fw-fallback{display:none;align-items:baseline;justify-content:center;flex-wrap:wrap;gap:clamp(12px,2.4vw,30px);line-height:1.2;padding-bottom:.22em}
+.hero-brand.no-img .hb-fallback,.f-word.no-img .fw-fallback{display:flex}
+.hb-script,.fw-script{font-family:var(--script);font-weight:400;color:var(--heading);text-shadow:0 0 46px rgba(156,192,226,.3),0 2px 18px rgba(0,0,0,.45)}
+.hb-caps,.fw-caps{font-family:var(--serif);font-weight:400;color:#ffffff;text-transform:uppercase;text-shadow:0 2px 14px rgba(0,0,0,.35)}
+.hb-fallback .hb-script,.fw-fallback .fw-script{font-size:clamp(80px,17vw,195px)}
+.hb-fallback .hb-caps,.fw-fallback .fw-caps{font-size:clamp(24px,4.6vw,58px);letter-spacing:.3em;margin-right:-.3em}
 
 /* слоган — спокойный, без акцента */
 h1{font-family:var(--serif);font-weight:400;font-style:italic;font-size:clamp(24px,3.4vw,40px);line-height:1.25;letter-spacing:.01em;margin:clamp(10px,2vh,18px) 0 0;color:var(--ink-2)}
@@ -184,7 +196,7 @@ h1{font-family:var(--serif);font-weight:400;font-style:italic;font-size:clamp(24
 .works-label{display:flex;align-items:center;justify-content:center;gap:14px;font-size:clamp(11px,1.2vw,14px);font-weight:800;letter-spacing:.34em;text-transform:uppercase;color:var(--steel-2);margin:clamp(28px,4.5vh,48px) 0 0}
 .works-label::before,.works-label::after{content:"";width:44px;height:1px;background:var(--steel-2);flex:0 0 auto}
 
-/* ============ бегущая строка из фото (спокойная, некрупная) ============ */
+/* ============ бегущая строка из фото ============ */
 .photo-marquee{
   position:relative;z-index:1;
   margin:clamp(16px,2.5vh,26px) 0 0;
@@ -192,14 +204,14 @@ h1{font-family:var(--serif);font-weight:400;font-style:italic;font-size:clamp(24
   -webkit-mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent);
   mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent);
 }
-.pg-track{display:flex;width:max-content;animation:pmove 60s linear infinite;will-change:transform}
+.pg-track{display:flex;width:max-content;animation:pmove 28s linear infinite;will-change:transform}
 .photo-marquee:hover .pg-track{animation-play-state:paused}
 .pg-track img{
-  height:clamp(80px,12vw,140px);width:auto;flex:0 0 auto;
-  object-fit:cover;border-radius:10px;
-  margin-right:clamp(8px,1vw,14px);
-  opacity:.88;
-  box-shadow:0 10px 24px -16px rgba(0,0,0,.7);
+  height:clamp(120px,16vw,200px);width:auto;flex:0 0 auto;
+  object-fit:cover;border-radius:12px;
+  margin-right:clamp(10px,1.4vw,18px);
+  opacity:.92;
+  box-shadow:0 12px 28px -18px rgba(0,0,0,.75);
 }
 @keyframes pmove{to{transform:translateX(-50%)}}
 
@@ -338,7 +350,8 @@ footer.site{background:var(--navy-deep);color:#93a9c2;padding:clamp(50px,8vw,90p
 .socials a{width:46px;height:46px;border:1px solid rgba(219,230,241,.25);border-radius:50%;display:grid;place-items:center;color:#e7eef6;transition:.35s var(--ease)}
 .socials a:hover{background:var(--steel);border-color:var(--steel);transform:translateY(-3px)}
 .socials svg{width:18px;height:18px;fill:currentColor}
-.f-word{font-family:var(--script);font-size:clamp(52px,11vw,150px);line-height:1.1;color:transparent;-webkit-text-stroke:1px rgba(219,230,241,.32);letter-spacing:.02em;white-space:nowrap;user-select:none;padding-bottom:20px;text-align:center}
+.f-word{display:flex;justify-content:center;padding-bottom:26px;user-select:none}
+.f-word .crop-logo{width:clamp(230px,44vw,540px)}
 .f-bottom{border-top:1px solid rgba(219,230,241,.15);padding-top:24px;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;font-size:clamp(9.5px,.9vw,11.5px);letter-spacing:.14em;text-transform:uppercase}
 
 /* toast / lightbox */
@@ -401,8 +414,9 @@ footer.site{background:var(--navy-deep);color:#93a9c2;padding:clamp(50px,8vw,90p
   .g-item.a,.g-item.b,.g-item.c,.g-item.d,.g-item.e,.g-item.f{aspect-ratio:4/3}
   .g-cap{transform:none;opacity:1;padding-top:56px}
   .mat{flex-basis:min(78vw,320px)}
-  .pg-track img{height:clamp(72px,20vw,110px)}
+  .pg-track img{height:clamp(100px,24vw,150px)}
   .hero-kicker::before,.hero-kicker::after,.works-label::before,.works-label::after{width:24px}
+  .hero-brand .crop-logo{width:min(88vw,460px)}
 }
 @media(max-width:520px){
   .nav-bar .btn.sm{display:none}
@@ -420,7 +434,8 @@ footer.site{background:var(--navy-deep);color:#93a9c2;padding:clamp(50px,8vw,90p
   .logo-text{display:none}
   .nav-bar{padding-left:10px}
   .brand{--s:36px}
-  .hero-brand{font-size:52px}
+  .hb-fallback .hb-script,.fw-fallback .fw-script{font-size:72px}
+  .hb-fallback .hb-caps,.fw-fallback .fw-caps{font-size:19px}
 }
 @media(hover:none){
   .g-cap{transform:none;opacity:1;padding-top:56px}
@@ -495,14 +510,27 @@ footer.site{background:var(--navy-deep);color:#93a9c2;padding:clamp(50px,8vw,90p
         <span class="cr-name">«На сваё»</span>
       </div>
       <p class="hero-kicker reveal">Кухни и мебель на заказ · Гомель / РБ</p>
-      <p class="hero-brand reveal" style="--d:.08s">Charmmebel</p>
+
+      <!-- Логотип-картинка. Загрузите картинку в репозиторий рядом с index.html под именем logo.png.
+           Пока файла нет — автоматически показывается текстовый запасной вариант. -->
+      <p class="hero-brand reveal" style="--d:.08s">
+        <span class="crop-logo">
+          <img src="logo.png" alt="Charm МЕБЕЛЬ"
+               onerror="this.closest('.hero-brand').classList.add('no-img');this.remove()">
+        </span>
+        <span class="hb-fallback">
+          <span class="hb-script">Charm</span>
+          <span class="hb-caps">Мебель</span>
+        </span>
+      </p>
+
       <h1 class="reveal" style="--d:.12s">Мебель, продуманная до мелочей</h1>
       <p class="hero-thin reveal" style="--d:.16s">Проектируем и собираем кухни, шкафы-купе, гостиные, прихожие, детские по вашим размерам.</p>
       <p class="works-label reveal" style="--d:.2s">Наши работы</p>
     </div>
   </div>
 
-  <!-- ===== БЕГУЩАЯ СТРОКА ИЗ ФОТО (над кнопкой «Заказать замер») =====
+  <!-- ===== БЕГУЩАЯ СТРОКА ИЗ ФОТО =====
        КАК ДОБАВИТЬ СВОЁ ФОТО:
        1) загрузите файл в репозиторий (рядом с index.html), например "kitchen1.jpg"
        2) добавьте строку <img src="kitchen1.jpg" alt="" loading="lazy"> ниже.
@@ -783,7 +811,19 @@ footer.site{background:var(--navy-deep);color:#93a9c2;padding:clamp(50px,8vw,90p
         </nav>
       </div>
     </div>
-    <div class="f-word">Charmmebel</div>
+
+    <!-- Большой логотип в подвале (тоже logo.png, с текстовым запасным вариантом) -->
+    <div class="f-word" aria-hidden="true">
+      <span class="crop-logo">
+        <img src="logo.png" alt="" loading="lazy"
+             onerror="this.closest('.f-word').classList.add('no-img');this.remove()">
+      </span>
+      <span class="fw-fallback">
+        <span class="fw-script">Charm</span>
+        <span class="fw-caps">Мебель</span>
+      </span>
+    </div>
+
     <div class="f-bottom">
       <span>© <span id="year">2025</span> Charm МЕБЕЛЬ · Гомель</span>
       <span>Кухни · Шкафы · Гостиные · Детские</span>
