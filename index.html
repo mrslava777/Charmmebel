@@ -59,12 +59,21 @@ button{font-family:inherit;cursor:pointer;background:none;border:none}
   --s:clamp(38px,3.4vw,44px);
   position:relative;width:var(--s);height:var(--s);flex:0 0 auto;
   font-size:var(--s);border-radius:50%;background:var(--steel);color:#fff;
-  display:grid;place-items:center;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  overflow:hidden; /* гарантия: ничего не выходит за пределы круга */
   transition:transform .4s var(--ease),width .4s var(--ease),height .4s var(--ease),font-size .4s var(--ease);
 }
 a:hover .brand{transform:rotate(-6deg)}
-.brand .bt{font-family:var(--serif);font-style:italic;font-size:.36em;line-height:1;margin-top:-.14em}
-.brand .bm{position:absolute;bottom:.19em;left:0;right:0;text-align:center;font-family:var(--sans);font-weight:700;font-size:.115em;letter-spacing:.24em;line-height:1}
+/* настоящий знак из logo-badge.png; если файла нет — показывается текстовая версия ниже */
+.brand>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;border-radius:50%;display:none}
+.brand.img-ok>img{display:block}
+.brand.img-ok .bt,.brand.img-ok .bm,.brand.img-ok .arc1,.brand.img-ok .arc2{display:none}
+/* «Charm» в Prata занимает 3.33em ширины, поэтому кегль подобран так,
+   чтобы слово целиком вписывалось в круг: ~0.69 диаметра с равными полями */
+.brand .bt{font-family:var(--serif);font-style:italic;font-size:.22em;line-height:1;margin:0;white-space:nowrap}
+/* «МЕБЕЛЬ» — мелкой строкой под словом; text-indent компенсирует
+   концевой трекинг, чтобы строка стояла ровно по центру */
+.brand .bm{margin-top:.18em;text-align:center;font-family:var(--sans);font-weight:700;font-size:.1em;letter-spacing:.18em;text-indent:.18em;line-height:1;white-space:nowrap}
 .brand .arc1,.brand .arc2{position:absolute;inset:.12em;border-radius:50%;border:.025em solid transparent;pointer-events:none}
 .brand .arc1{border-top-color:rgba(255,255,255,.85);transform:rotate(-28deg)}
 .brand .arc2{border-bottom-color:rgba(255,255,255,.85);transform:rotate(-28deg)}
@@ -501,6 +510,8 @@ footer.site{background:var(--navy-deep);color:var(--muted);padding:clamp(50px,8v
   <div class="nav-bar">
     <a class="logo" href="#top" aria-label="Charm МЕБЕЛЬ — на главную">
       <span class="brand" aria-hidden="true">
+        <img src="logo-badge.png" alt="" width="512" height="512" decoding="async"
+             onload="this.closest('.brand').classList.add('img-ok')" onerror="this.remove()">
         <span class="arc1"></span><span class="arc2"></span>
         <span class="bt">Charm</span><span class="bm">МЕБЕЛЬ</span>
       </span>
@@ -846,6 +857,8 @@ footer.site{background:var(--navy-deep);color:var(--muted);padding:clamp(50px,8v
       <div>
         <a class="logo" href="#top" style="color:var(--heading)">
           <span class="brand lg" aria-hidden="true">
+            <img src="logo-badge.png" alt="" width="512" height="512" decoding="async"
+                 onload="this.closest('.brand').classList.add('img-ok')" onerror="this.remove()">
             <span class="arc1"></span><span class="arc2"></span>
             <span class="bt">Charm</span><span class="bm">МЕБЕЛЬ</span>
           </span>
