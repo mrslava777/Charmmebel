@@ -228,6 +228,18 @@ h1{font-family:var(--serif);font-weight:400;font-style:italic;font-size:clamp(24
 .photo-marquee::-webkit-scrollbar{display:none;height:0}
 .photo-marquee.dragging{cursor:grabbing}
 .pg-track{display:flex;width:max-content;will-change:transform}
+/* под лентой: «больше фото и видео» + ссылки на соцсети */
+.hero-social{display:flex;flex-direction:column;align-items:center;gap:clamp(8px,1.3vh,14px);margin:clamp(6px,1.2vh,16px) 0 0;text-align:center}
+.hero-social .hs-note{font-family:var(--serif);font-style:italic;font-size:clamp(15px,1.6vw,19px);line-height:1.4;color:var(--heading);text-shadow:0 1px 12px rgba(251,249,245,.9)}
+.hs-links{display:flex;align-items:center;justify-content:center;gap:clamp(12px,1.8vw,24px);flex-wrap:wrap}
+.hs-links .ig-link{margin-top:0}
+
+/* адрес и часы работы — одной строкой вместо таблицы с цифрами */
+.hero-place{display:flex;align-items:baseline;justify-content:center;gap:clamp(8px,1.2vw,14px);flex-wrap:wrap;margin:clamp(26px,4.2vh,50px) 0 0;padding:clamp(15px,2.1vw,23px) 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);text-align:center}
+.hero-place .hp-my{font-family:var(--serif);font-size:clamp(19px,2.2vw,29px);font-weight:400;line-height:1.15;color:var(--heading)}
+.hero-place .hp-dot{color:var(--steel-2);font-size:clamp(12px,1.3vw,16px);line-height:1}
+.hero-place .hp-h{font-family:var(--sans);font-weight:300;font-size:clamp(14px,1.55vw,19px);line-height:1.3;color:var(--ink);letter-spacing:.01em}
+
 .pg-track img{
   height:clamp(150px,20vw,270px);width:auto;flex:0 0 auto;
   object-fit:cover;border-radius:14px;
@@ -564,7 +576,7 @@ footer.site{background:var(--navy-deep);color:var(--muted);padding:clamp(50px,8v
       </p>
 
       <h1 class="reveal" style="--d:.12s">Мебель, продуманная до мелочей</h1>
-      <p class="hero-thin reveal" style="--d:.16s">Проектируем и собираем кухни, шкафы-купе, гостиные, прихожие, детские по вашим размерам.</p>
+      <p class="hero-thin reveal" style="--d:.16s">Проектируем и устанавливаем кухни, шкафы-купе, гостиные, прихожие, детские по вашим размерам.</p>
     </div>
   </div>
 
@@ -586,6 +598,17 @@ footer.site{background:var(--navy-deep);color:var(--muted);padding:clamp(50px,8v
     </div>
   </div>
 
+  <!-- больше фото и видео — ссылки на соцсети, сразу под лентой -->
+  <div class="wrap">
+    <p class="hero-social reveal" style="--d:.22s">
+      <span class="hs-note">Больше фото и видео — каждый день в наших соцсетях</span>
+      <span class="hs-links">
+        <a class="ig-link" href="https://www.instagram.com/charmmebell" target="_blank" rel="noopener">Instagram →</a>
+        <a class="ig-link" href="https://www.tiktok.com/@charmmebell" target="_blank" rel="noopener">TikTok →</a>
+      </span>
+    </p>
+  </div>
+
   <div class="wrap">
     <div class="hero-intro">
       <div class="hero-cta reveal" style="--d:.24s">
@@ -593,12 +616,11 @@ footer.site{background:var(--navy-deep);color:var(--muted);padding:clamp(50px,8v
         <a class="btn ghost" href="#portfolio"><span>Портфолио</span></a>
       </div>
     </div>
-    <div class="hero-stats reveal" style="--d:.28s">
-      <div class="stat"><b data-count="193">0</b><span>проекта в ленте</span></div>
-      <div class="stat"><b data-count="1700">0</b><span>подписчиков IG</span></div>
-      <div class="stat"><b>Гомель</b><span>и вся область</span></div>
-      <div class="stat"><b>Пн–Сб</b><span>9:00–19:00</span></div>
-    </div>
+    <p class="hero-place reveal" style="--d:.28s">
+      <span class="hp-my">Гомель и РБ</span>
+      <span class="hp-dot" aria-hidden="true">·</span>
+      <span class="hp-h">без выходных с 9 до 20</span>
+    </p>
   </div>
 </section>
 
@@ -713,7 +735,7 @@ footer.site{background:var(--navy-deep);color:var(--muted);padding:clamp(50px,8v
         <div class="tl-item reveal"><span class="k">Шаг 03</span><h3>Замер</h3><p>Мастер приезжает в удобное время, снимает точные размеры, учитывает трубы, розетки и кривизну стен.</p></div>
         <div class="tl-item reveal"><span class="k">Шаг 04</span><h3>Дизайн-проект</h3><p>Готовим 3D-проект с планировкой, цветами фасадов и фурнитурой.</p></div>
         <div class="tl-item reveal"><span class="k">Шаг 05</span><h3>Производство</h3><p>Изготавливаем мебель и держим вас в курсе каждого этапа — от распила до присадки фурнитуры.</p></div>
-        <div class="tl-item reveal"><span class="k">Шаг 06</span><h3>Доставка и сборка</h3><p>Привозим и собираем. Убираем за собой — вам остаётся только пользоваться.</p></div>
+        <div class="tl-item reveal"><span class="k">Шаг 06</span><h3>Доставка и установка</h3><p>Привозим и устанавливаем. Убираем за собой — вам остаётся только пользоваться.</p></div>
       </div>
     </div>
   </div>
@@ -807,7 +829,7 @@ footer.site{background:var(--navy-deep);color:var(--muted);padding:clamp(50px,8v
         <div class="c-row"><span class="k">Телефон</span><a class="v" href="tel:+375447878770">+375 (44) 78-78-770</a></div>
         <div class="c-row"><span class="k">Instagram</span><a class="v" href="https://www.instagram.com/charmmebell" target="_blank" rel="noopener">@charmmebell</a></div>
         <div class="c-row"><span class="k">Салон</span><span class="v">Гомель, ул. Ветковская, 2</span></div>
-        <div class="c-row"><span class="k">Часы работы</span><span class="v">Пн–Сб · 9:00–19:00</span></div>
+        <div class="c-row"><span class="k">Часы работы</span><span class="v">Без выходных · 9:00–20:00</span></div>
         <div class="c-row"><span class="k">География</span><span class="v">Гомель и область</span></div>
         <div class="contact-map">
           <img loading="lazy" src="https://image.qwenlm.ai/public_source/ec30df1a-4647-4ec6-96b6-c89f04754493/3f6e3c5e8-92c6-4338-8227-f921b5e7346e6636.png" alt="Шоурум Charm МЕБЕЛЬ в Гомеле">
@@ -847,7 +869,7 @@ footer.site{background:var(--navy-deep);color:var(--muted);padding:clamp(50px,8v
           <a href="tel:+375447878770">+375 (44) 78-78-770</a>
           <a href="https://www.instagram.com/charmmebell" target="_blank" rel="noopener">instagram.com/charmmebell</a>
           <a href="https://yandex.by/maps/?text=Гомель,%20улица%20Ветковская%202" target="_blank" rel="noopener">ул. Ветковская, 2 · Гомель</a>
-          <a href="#contacts">Пн–Сб · 9:00–19:00</a>
+          <a href="#contacts">Без выходных · 9:00–20:00</a>
         </nav>
       </div>
     </div>
